@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5f6f1">
+  <title>Bilanzwerkstatt — Bestandskonten üben</title>
+  <link rel="stylesheet" href="styles/index.css">
+  <script src="scripts/index.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#start"><span class="brand-mark">B</span><span>Bilanzwerkstatt</span></a>
+    <span class="course-label">VWL <span aria-hidden="true">/</span> Bestandskonten</span>
+  </header>
+
+  <main id="start" class="page-shell">
+    <section class="welcome" aria-labelledby="page-title">
+      <p class="eyebrow">DEIN ÜBUNGSBLATT</p>
+      <h1 id="page-title">Von Geschäftsfällen<br>zu <span>Bestandskonten.</span></h1>
+      <p class="welcome-copy">Bearbeite zehn Geschäftsfälle in deinem Tempo. Bestimme die Konten, Soll und Haben sowie die Bilanzveränderung.</p>
+      <div class="progress-wrap"><div class="progress-copy"><span id="progress-label">Deine Runde</span><span id="progress-count">10 Geschäftsfälle</span></div><div class="progress-track"><span id="progress-bar"></span></div></div>
+      <button id="new-round" class="button button-secondary" type="button">Neue Runde mischen</button>
+    </section>
+
+    <nav class="mode-switch" aria-label="Übungsmodus auswählen">
+      <button class="mode-button is-active" type="button" data-mode="quiz" aria-pressed="true"><span>01</span><strong>Buchungssatz-Check</strong><small>Fälle lösen und direkt prüfen</small></button>
+      <button class="mode-button" type="button" data-mode="ledger" aria-pressed="false"><span>02</span><strong>T-Konten &amp; Bilanz</strong><small>Selbst buchen und abschließen</small></button>
+    </nav>
+
+    <div id="quiz-mode" class="mode-panel">
+    <section class="worksheet" aria-labelledby="cases-heading">
+      <div class="section-top"><div><p class="eyebrow">SCHRITT 1</p><h2 id="cases-heading">Geschäftsfälle</h2></div><span class="section-note">Konten, Buchungsseiten und Bilanzveränderung auswählen.</span></div>
+      <ol id="case-list" class="case-list"></ol>
+      <div class="account-actions"><span id="quiz-summary" class="section-note">Löse alle Buchungssätze und prüfe deine Runde.</span><button id="check-quiz" class="button button-primary" type="button">Antworten prüfen <span aria-hidden="true">→</span></button></div>
+      <div id="quiz-results" class="quiz-results" role="status" aria-live="polite" hidden></div>
+    </section>
+    </div>
+
+    <div id="ledger-mode" class="mode-panel" hidden>
+    <section class="worksheet accounts-section" aria-labelledby="ledger-cases-heading">
+      <div class="section-top ledger-cases-heading"><div><p class="eyebrow">SCHRITT 1</p><h2 id="ledger-cases-heading">Geschäftsfälle</h2></div><span class="section-note">Fälle, Beträge und Anfangsbestände wechseln bei jeder neuen Runde.</span></div>
+      <ol id="ledger-case-list" class="case-list compact-case-list"></ol>
+    </section>
+    <section class="worksheet accounts-section" aria-labelledby="accounts-heading">
+      <div class="section-top"><div><p class="eyebrow">SCHRITT 2</p><h2 id="accounts-heading">Deine T-Konten</h2></div><span class="section-note">Trage Geschäftsfallnummer, Betrag und Soll/Haben selbst ein.</span></div>
+      <div class="account-groups">
+        <div class="account-group"><div class="group-title"><span class="group-symbol">A</span><div><h3>Aktiva</h3><p>Aktivkonten: Anfangsbestand im Soll</p></div></div><div id="asset-accounts" class="account-grid"></div></div>
+        <div class="account-group"><div class="group-title"><span class="group-symbol passive">P</span><div><h3>Passiva</h3><p>Passivkonten: Anfangsbestand im Haben</p></div></div><div id="liability-accounts" class="account-grid"></div></div>
+      </div>
+      <div class="account-actions"><p>Du kannst auf jedem Konto beliebig viele Buchungszeilen ergänzen.</p><button id="finish-round" class="button button-primary" type="button">Runde prüfen und Bilanz bilden <span aria-hidden="true">→</span></button></div>
+    </section>
+
+    <section id="results" class="worksheet results-section" aria-labelledby="results-heading" hidden>
+      <div class="section-top"><div><p class="eyebrow">SCHRITT 3</p><h2 id="results-heading">Abschluss &amp; Bilanz</h2></div><span id="result-status" class="result-status" role="status" aria-live="polite"></span></div>
+      <div id="result-message" class="result-message"></div>
+      <div class="balance-columns"><div><h3>Aktiva · Schlussbestände</h3><div id="asset-balances" class="balance-list"></div><strong id="asset-total" class="balance-total"></strong></div><div><h3>Passiva · Schlussbestände</h3><div id="liability-balances" class="balance-list"></div><strong id="liability-total" class="balance-total"></strong></div></div>
+      <div id="journal-check" class="journal-check"></div>
+      <button id="show-solutions" class="button button-secondary" type="button">Buchungssätze einblenden</button>
+      <div id="solutions" class="solutions" hidden></div>
+    </section>
+    </div>
+  </main>
+  <footer><span>Übung für den Unterricht</span><span>Bestandskonten · T-Konten · Bilanz</span></footer>
+</body>
+</html>
